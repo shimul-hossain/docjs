@@ -1,0 +1,43 @@
+body {
+  padding-left: 300px;
+  margin: 0;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  overflow-y: auto;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.sidebar a {
+  text-decoration: none;
+  color: #303030;
+line-height: 50px;
+  padding: 0 10px;
+  display: block;
+}
+.sidebar ul ul a::before {
+	background: #eee;
+	content: "";
+	width: 2px;
+	height: 50px;
+	position: absolute;
+	margin-left: -10px;
+	z-index: -1
+}
+.sidebar a:hover {
+  background: rgba(200, 200, 200, .1)
+}
+.sidebar li li {
+  margin-left: 30px
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+h1, h2, h3, h4, h5, h6, a, p, div, input, button {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif
+}
+html, body {font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif }
