@@ -1,0 +1,1 @@
+The branding object specifies the branding for the documentation!
