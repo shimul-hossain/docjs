@@ -69,7 +69,13 @@
 	-webkit-font-feature-settings: 'liga';
 	-webkit-font-smoothing: antialiased;
 }
-
+#table_of_contents {
+	max-height: 95vh;
+	overflow-y: scroll;
+}
+#table_of_contents::-webkit-scrollbar {
+	display: none;
+}
 body {
 	padding-left: 300px;
 	background: var(--bg-color);

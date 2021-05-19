@@ -1,0 +1,6 @@
+The linkTarget variable opens links in a new tab
+```
+// ...
+linkTarget: "_blank",
+// ...
+```
