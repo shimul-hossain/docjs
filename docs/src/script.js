@@ -2,6 +2,9 @@ var sidebar_links = [],
 	default_page, el = config.el;
 default_page = 1, turnOffScrollSpy = 0;
 document.title = config.branding.title;
+if(config.theme == "Bootstrap") {
+	document.body.classList.add('bootstrapTheme')
+}
 if (config.fullscreen == true) {
 	document.documentElement.classList.add('hide-sidenav');
 }
@@ -220,9 +223,9 @@ function docjs_open_page(value, element, title) {
 				}
 			}
 			if (config.tableOfContents !== true) {
-				page_content.innerHTML = "<div class=\"container\"><h1 id='page_title'></h1><hr id='hr'>" + html + "<div class='footer'><div class='row'><div class='col col-5'><div style=\"padding: 10px;\"><button class='btn prev' id='prev' onclick='document.getElementById(\"" + elem_id_prev + "\").click()'><b>Previous</b><br>" + prev_text + "</button></div></div><div class='col col-5'><div style=\"padding: 10px;\"><button class='btn next' id='next' onclick='document.getElementById(\"" + elem_id + "\").click()'><b>Next</b><br>" + next_text + "</button></div></div>\n</div>\n</div>\n</div>";
+				page_content.innerHTML = "<div class=\"container\"><h1 id='page_title'></h1><hr id='hr'>" + html + "<div class='footer'><div class='row'><div class='col col-5'><div style=\"padding: 10px;\"><button class='footerBtn prev' id='prev' onclick='document.getElementById(\"" + elem_id_prev + "\").click()'><b>Previous</b><br>" + prev_text + "</button></div></div><div class='col col-5'><div style=\"padding: 10px;\"><button class='footerBtn next' id='next' onclick='document.getElementById(\"" + elem_id + "\").click()'><b>Next</b><br>" + next_text + "</button></div></div>\n</div>\n</div>\n</div>";
 			} else {
-				page_content.innerHTML = "<div class=\"container\"><div class='row'><div class='col col-8 m10' id='page'><h1 id='page_title'></h1><hr id='hr'>" + html + "</div><div class='col col-2 hide-on-mobile' id='table_of_contents' style='padding: 10px;position:sticky;z-index: 0;top: 0;'></div></div><div class='footer'><div class='row'><div class='col col-5'><div style=\"padding: 10px;\"><button class='btn prev' id='prev' onclick='document.getElementById(\"" + elem_id_prev + "\").click()'><b>Previous</b><br>" + prev_text + "</button></div></div><div class='col col-5'><div style=\"padding: 10px;\"><button class='btn next' id='next' onclick='document.getElementById(\"" + elem_id + "\").click()'><b>Next</b><br>" + next_text + "</button></div></div>\n</div>\n</div>\n</div>";
+				page_content.innerHTML = "<div class=\"container\"><div class='row'><div class='col col-8 m10' id='page'><h1 id='page_title'></h1><hr id='hr'>" + html + "</div><div class='col col-2 hide-on-mobile' id='table_of_contents' style='padding: 10px;position:sticky;z-index: 0;top: 0;'></div></div><div class='footer'><div class='row'><div class='col col-5'><div style=\"padding: 10px;\"><button class='footerBtn prev' id='prev' onclick='document.getElementById(\"" + elem_id_prev + "\").click()'><b>Previous</b><br>" + prev_text + "</button></div></div><div class='col col-5'><div style=\"padding: 10px;\"><button class='footerBtn next' id='next' onclick='document.getElementById(\"" + elem_id + "\").click()'><b>Next</b><br>" + next_text + "</button></div></div>\n</div>\n</div>\n</div>";
 			}
 			// table_of_contents
 			if (config.tableOfContents == true) {

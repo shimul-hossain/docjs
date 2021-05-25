@@ -30,3 +30,27 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 #### *Lorem* ipsum
 #### **Dolor** sit amet
 #### ~~Consectetur~~ adipiscing elit
+
+<kbd>CTRL C</kbd> Copies text.
+
+<button type="button" class="btn btn-primary">Primary</button>
+<br>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<br>
+<button type="button" class="btn btn-success">Success</button>
+<br>
+<button type="button" class="btn btn-danger">Danger</button>
+<br>
+<button type="button" class="btn btn-warning">Warning</button>
+<br>
+<button type="button" class="btn btn-light">Light</button>
+<br>
+<button type="button" class="btn btn-dark">Dark</button>
+<br>
+
+<button type="button" class="btn btn-link">Link</button>
+<br>
+
+<button type="button" class="btn btn-lg btn-danger">Big  Button</button>
+<br>
+<button type="button" class="btn btn-sm btn-danger">Small  Button</button>
