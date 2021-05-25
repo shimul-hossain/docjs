@@ -5,6 +5,9 @@ document.title = config.branding.title;
 if(config.theme == "Bootstrap") {
 	document.body.classList.add('bootstrapTheme')
 }
+if(config.theme == "Flat") {
+	document.body.classList.add('flatTheme')
+}
 if (config.fullscreen == true) {
 	document.documentElement.classList.add('hide-sidenav');
 }

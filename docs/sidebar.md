@@ -22,4 +22,5 @@
 		* [searchToggleColor](#)
 * [Other](#)
 	* [Guide](#)
+	* [404 page example](#)
 	* [Example](#)
