@@ -89,6 +89,9 @@ xhttp.onreadystatechange = function () {
 			var link_id = d++;
 			tablinks[i].id = "docjs_link_" + link_id;
 			tablinks[i].addEventListener('click', function () {
+				if(document.body.clientWidth < 992 && config.closeSidenavOnClick == true) {
+					close_nav()
+				}
 				docjs_open_page(this.innerHTML, this.id, this.innerHTML);
 				toggle(this);
 				if (document.documentElement.classList.contains('hide-sidenav')) {
