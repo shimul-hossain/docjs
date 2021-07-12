@@ -44,6 +44,12 @@ xhttp.onreadystatechange = function () {
 			if (typeof config.colors.sidebarColor !== undefined) {
 				document.documentElement.style.setProperty("--sidebar-color", config.colors.sidebarColor);
 			}
+			if (typeof config.colors.navbarBackgroundColor !== undefined) {
+				document.documentElement.style.setProperty("--navbar-color", config.colors.navbarBackgroundColor);
+			}
+			if (typeof config.colors.navbarFontColor !== undefined) {
+				document.documentElement.style.setProperty("--nav-font-color", config.colors.navbarFontColor);
+			}
 			if (typeof config.colors.backgroundColor !== undefined) {
 				document.documentElement.style.setProperty("--bg-color", config.colors.backgroundColor);
 			}
@@ -83,6 +89,9 @@ xhttp.onreadystatechange = function () {
 			var link_id = d++;
 			tablinks[i].id = "docjs_link_" + link_id;
 			tablinks[i].addEventListener('click', function () {
+				if(document.body.clientWidth < 992 && config.closeSidenavOnClick == true) {
+					close_nav()
+				}
 				docjs_open_page(this.innerHTML, this.id, this.innerHTML);
 				toggle(this);
 				if (document.documentElement.classList.contains('hide-sidenav')) {
@@ -181,7 +190,7 @@ function close_nav() {
 function docjs_open_page(value, element, title) {
 	turnOffScrollSpy = 1;
 	var page_content = document.getElementById("page_content");
-	page_content.innerHTML = '<div style="padding-top:50px;" class="container"><center><svg class="spinner" viewBox="0 0 50 50"> <circle class="spinner__path" cx="25" cy="25" r="20" fill="none" stroke-width="3"></circle> </svg></center></div>';
+	page_content.innerHTML = '<div style="padding-top:30vh;" class="container"><center><svg class="spinner" viewBox="0 0 50 50"> <circle class="spinner__path" cx="25" cy="25" r="20" fill="none" stroke-width="3"></circle> </svg></center></div>';
 	var filename = value.replace(/\s+/g, '-').toLowerCase() + ".md";
 	if (filename == 'home.md') {
 		filename = "README.md";
@@ -203,6 +212,7 @@ function docjs_open_page(value, element, title) {
 				}),
 				text = '' + htmltext + '',
 				html = converter.makeHtml(htmltext);
+				html.split("<script").join("&lt;script").split("<"+"/script>").join("&lt;/script&gt;");
 			var elem_id_1 = parseInt(element.replace(/\D+/g, '')) + 1;
 			var elem_id_2 = parseInt(element.replace(/\D+/g, '')) - 1;
 			var elem_id = "docjs_link_" + elem_id_1;
@@ -332,6 +342,7 @@ function docjs_open_page(value, element, title) {
 	xhttp.send();
 }
 
+document.head = document.head || document.getElementsByTagName('head')[0];
 function changeFavicon(src) {
 	var link = document.createElement('link'),
 		oldLink = document.getElementById('dynamic-favicon');
@@ -343,7 +354,9 @@ function changeFavicon(src) {
 	}
 	document.head.appendChild(link);
 }
-
+if(typeof config.customCSS !== "undefined") {
+	document.head.innerHTML += "<style>\n" + config.customCSS + "\n</style>";
+}
 function mobile() {
 	return /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }

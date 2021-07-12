@@ -2,6 +2,12 @@ var sidebar_links = [],
 	default_page, el = config.el;
 default_page = 1, turnOffScrollSpy = 0;
 document.title = config.branding.title;
+if(config.theme == "Bootstrap") {
+	document.body.classList.add('bootstrapTheme')
+}
+if(config.theme == "Flat") {
+	document.body.classList.add('flatTheme')
+}
 if (config.fullscreen == true) {
 	document.documentElement.classList.add('hide-sidenav');
 }
@@ -37,6 +43,12 @@ xhttp.onreadystatechange = function () {
 		if (config.customColors == true) {
 			if (typeof config.colors.sidebarColor !== undefined) {
 				document.documentElement.style.setProperty("--sidebar-color", config.colors.sidebarColor);
+			}
+			if (typeof config.colors.navbarBackgroundColor !== undefined) {
+				document.documentElement.style.setProperty("--navbar-color", config.colors.navbarBackgroundColor);
+			}
+			if (typeof config.colors.navbarFontColor !== undefined) {
+				document.documentElement.style.setProperty("--nav-font-color", config.colors.navbarFontColor);
 			}
 			if (typeof config.colors.backgroundColor !== undefined) {
 				document.documentElement.style.setProperty("--bg-color", config.colors.backgroundColor);
@@ -175,7 +187,7 @@ function close_nav() {
 function docjs_open_page(value, element, title) {
 	turnOffScrollSpy = 1;
 	var page_content = document.getElementById("page_content");
-	page_content.innerHTML = '<div style="padding-top:50px;" class="container"><center><svg class="spinner" viewBox="0 0 50 50"> <circle class="spinner__path" cx="25" cy="25" r="20" fill="none" stroke-width="3"></circle> </svg></center></div>';
+	page_content.innerHTML = '<div style="padding-top:30vh;" class="container"><center><svg class="spinner" viewBox="0 0 50 50"> <circle class="spinner__path" cx="25" cy="25" r="20" fill="none" stroke-width="3"></circle> </svg></center></div>';
 	var filename = value.replace(/\s+/g, '-').toLowerCase() + ".md";
 	if (filename == 'home.md') {
 		filename = "README.md";
@@ -197,6 +209,7 @@ function docjs_open_page(value, element, title) {
 				}),
 				text = '' + htmltext + '',
 				html = converter.makeHtml(htmltext);
+				html.split("<script").join("&lt;script").split("<"+"/script>").join("&lt;/script&gt;");
 			var elem_id_1 = parseInt(element.replace(/\D+/g, '')) + 1;
 			var elem_id_2 = parseInt(element.replace(/\D+/g, '')) - 1;
 			var elem_id = "docjs_link_" + elem_id_1;
@@ -220,9 +233,9 @@ function docjs_open_page(value, element, title) {
 				}
 			}
 			if (config.tableOfContents !== true) {
-				page_content.innerHTML = "<div class=\"container\"><h1 id='page_title'></h1><hr id='hr'>" + html + "<div class='footer'><div class='row'><div class='col col-5'><div style=\"padding: 10px;\"><button class='btn prev' id='prev' onclick='document.getElementById(\"" + elem_id_prev + "\").click()'><b>Previous</b><br>" + prev_text + "</button></div></div><div class='col col-5'><div style=\"padding: 10px;\"><button class='btn next' id='next' onclick='document.getElementById(\"" + elem_id + "\").click()'><b>Next</b><br>" + next_text + "</button></div></div>\n</div>\n</div>\n</div>";
+				page_content.innerHTML = "<div class=\"container\"><h1 id='page_title'></h1><hr id='hr'>" + html + "<div class='footer'><div class='row'><div class='col col-5'><div style=\"padding: 10px;\"><button class='footerBtn prev' id='prev' onclick='document.getElementById(\"" + elem_id_prev + "\").click()'><b>Previous</b><br>" + prev_text + "</button></div></div><div class='col col-5'><div style=\"padding: 10px;\"><button class='footerBtn next' id='next' onclick='document.getElementById(\"" + elem_id + "\").click()'><b>Next</b><br>" + next_text + "</button></div></div>\n</div>\n</div>\n</div>";
 			} else {
-				page_content.innerHTML = "<div class=\"container\"><div class='row'><div class='col col-8 m10' id='page'><h1 id='page_title'></h1><hr id='hr'>" + html + "</div><div class='col col-2 hide-on-mobile' id='table_of_contents' style='padding: 10px;position:sticky;z-index: 0;top: 0;'></div></div><div class='footer'><div class='row'><div class='col col-5'><div style=\"padding: 10px;\"><button class='btn prev' id='prev' onclick='document.getElementById(\"" + elem_id_prev + "\").click()'><b>Previous</b><br>" + prev_text + "</button></div></div><div class='col col-5'><div style=\"padding: 10px;\"><button class='btn next' id='next' onclick='document.getElementById(\"" + elem_id + "\").click()'><b>Next</b><br>" + next_text + "</button></div></div>\n</div>\n</div>\n</div>";
+				page_content.innerHTML = "<div class=\"container\"><div class='row'><div class='col col-8 m10' id='page'><h1 id='page_title'></h1><hr id='hr'>" + html + "</div><div class='col col-2 hide-on-mobile' id='table_of_contents' style='padding: 10px;position:sticky;z-index: 0;top: 0;'></div></div><div class='footer'><div class='row'><div class='col col-5'><div style=\"padding: 10px;\"><button class='footerBtn prev' id='prev' onclick='document.getElementById(\"" + elem_id_prev + "\").click()'><b>Previous</b><br>" + prev_text + "</button></div></div><div class='col col-5'><div style=\"padding: 10px;\"><button class='footerBtn next' id='next' onclick='document.getElementById(\"" + elem_id + "\").click()'><b>Next</b><br>" + next_text + "</button></div></div>\n</div>\n</div>\n</div>";
 			}
 			// table_of_contents
 			if (config.tableOfContents == true) {
@@ -326,6 +339,7 @@ function docjs_open_page(value, element, title) {
 	xhttp.send();
 }
 
+document.head = document.head || document.getElementsByTagName('head')[0];
 function changeFavicon(src) {
 	var link = document.createElement('link'),
 		oldLink = document.getElementById('dynamic-favicon');
@@ -337,7 +351,9 @@ function changeFavicon(src) {
 	}
 	document.head.appendChild(link);
 }
-
+if(typeof config.customCSS !== "undefined") {
+	document.head.innerHTML += "<style>\n" + config.customCSS + "\n</style>";
+}
 function mobile() {
 	return /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }

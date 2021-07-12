@@ -1,0 +1,1 @@
+When "closeSidenavOnClick" is set to true, the sidenav will close when a link is pressed on mobile

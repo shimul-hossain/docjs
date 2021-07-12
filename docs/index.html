@@ -17,11 +17,13 @@
         el: document.getElementById('root'),
         directory: "./pages/",
 
-				theme: "Flat",
+				// theme: "Bootstrap",
+				scrollspyStyle: "line",
         tableOfContents: true,
         linkTarget: "_blank",
         syntaxHighlight: true,
         navbar: true,
+				closeSidenavOnClick: true,
         contentSearch: true,
         branding: {
           title: "DocJS",
@@ -31,20 +33,23 @@
           color: "#0366fc",
           url: "https://github.com/ManuTheCoder/DocJS"
         },
+				// customColors: true,
         // fullscreen: true,
-        // colors: {
-        //   sidebarColor: "#283593",
-        //   backgroundColor: "#fff",
-        //   fontColor: "#303030",
-        //   scrollSpyActiveColor: "#4527a0",
-        //   nestedLiActiveColor: "#fff",
-        //   nestedLiColor: "#3f51b5",
-        //   sidebarFontColor: "#fff",
-        //   bottomNavFocusColor: "#4527a0",
-        //   bottomNavHoverColor: "#4527a0",
-        //   loaderColor: "#1a237e",
-        //   searchToggleColor: "#fff",
-        // },
+        colors: {
+          sidebarColor: "#283593",
+          backgroundColor: "#fff",
+					navbarBackgroundColor: "red",
+					navbarFontColor: "#fff",
+          fontColor: "#303030",
+          scrollSpyActiveColor: "#4527a0",
+          nestedLiActiveColor: "#fff",
+          nestedLiColor: "#3f51b5",
+          sidebarFontColor: "#fff",
+          bottomNavFocusColor: "#4527a0",
+          bottomNavHoverColor: "#4527a0",
+          loaderColor: "#1a237e",
+          searchToggleColor: "#fff",
+        },
       };
       window.onerror = function(msg, url, linenumber) {
           alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);

@@ -1,0 +1,1 @@
+The navbarFontColor specifies the font color of the navbar. Default is "#303030".
