@@ -16,10 +16,6 @@ This **single page** documentation uses simple AJAX requests based on the innerH
   <body>
     <div id="app"></div>
     <script>
-      window.onerror = function(msg, url, linenumber) {
-        alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-        return true;
-      }
       const docjs = {
         domain: window.location.href.split("#")[0],
         directory: window.location.href.split("#")[0],

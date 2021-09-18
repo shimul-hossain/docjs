@@ -198,6 +198,9 @@ function docjs_open_page(value, element, title) {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
+			if(config.pageLoadCallback) {
+				config.pageLoadCallback()
+			}
 			turnOffScrollSpy = 0;
 			document.title = title + " | " + config.branding.title;
 			history.pushState(null, null, window.location);

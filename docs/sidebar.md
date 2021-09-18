@@ -11,6 +11,7 @@
 	* [closeSidenavOnClick](#)
 	* [Syntax Highlighting](#)
 	* [customCSS](#)
+	* [Page Load Callback](#)
 	* [Custom Colors](#)
 		* [sidebarColor](#)
 		* [backgroundColor](#)
